@@ -27,17 +27,30 @@
 
 <style>
   h2 {
+    color: #edf2f4;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    font-size: 40px;
+    text-transform: uppercase;
     text-align: center;
   }
   
   table, th, td {
-    border: 1px solid black;
+    border: 3px solid #edf2f4;
     border-collapse: collapse;
+  }
+
+  table {
+    background-color: #ef233c;
   }
 
   th, td {
     text-align: center;
     width: 10vw;
+    color: #edf2f4;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    font-size: 20px;
   }
 
   .games-scores {

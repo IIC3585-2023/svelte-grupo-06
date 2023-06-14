@@ -99,9 +99,9 @@
       </div>
     </div>
     {#if gameOver}
-      <h2>Game Over</h2>
+      <h2 class="game-over">Game Over</h2>
       <h3>Score: {currentScore}</h3>
-      <button on:click={() => window.location.reload()}>Return to menu</button>
+      <button class="return-button" on:click={() => window.location.reload()}>Return to menu</button>
     {:else}
       <h2>Score: {currentScore}</h2>
     {/if}
@@ -151,12 +151,16 @@
     margin-bottom: 30px;
   }
 
-  h2 {
+  h2, h3 {
     color: #edf2f4;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: 600;
-    font-size: 30px;
+    font-size: 40px;
     text-transform: uppercase;
+  }
+
+  .game-over {
+    color: red;
   }
 
   .game-container {
@@ -164,6 +168,52 @@
     flex-direction: column;
     align-items: center;
     flex-wrap: wrap;
+  }
+
+  /* CSS button 5: https://getcssscan.com/css-buttons-examples */ 
+  .return-button {
+    align-items: center;
+    background-clip: padding-box;
+    background-color: #fa6400;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+    box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-flex;
+    font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    justify-content: center;
+    line-height: 1.25;
+    margin: 0;
+    min-height: 3rem;
+    padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+    position: relative;
+    text-decoration: none;
+    transition: all 250ms;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: baseline;
+    width: auto;
+  }
+
+  .return-button:hover,
+  .return-button:focus {
+    background-color: #fb8332;
+    box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+  }
+
+  .return-button:hover {
+    transform: translateY(-1px);
+  }
+
+  .return-button:active {
+    background-color: #c85000;
+    box-shadow: rgba(0, 0, 0, .06) 0 2px 4px;
+    transform: translateY(0);
   }
 
   @media (max-width: 660px) {

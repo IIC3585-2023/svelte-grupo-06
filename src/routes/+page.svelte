@@ -27,6 +27,36 @@
   })
 </script>
 
+{#if gameStarted}
+  <Game {gameType} />
+{:else}
+  <div class="wrapper">
+    <div class="main-container">
+      <img src="assets/masomenos.png" alt="Logo"/>
+      <div class="red-strip">
+        <label for="gameType">Select Game Type:</label>
+      </div>
+      <select bind:value={gameType} id="gameType">
+        <option value="population">Population</option>
+        <option value="area">Area</option>
+        <option value="infant_mortality">Infant Mortality</option>
+        <option value="gdp">GDP</option>
+        <option value="unemployment">Unemployment</option>
+      </select>
+      <button on:click={startGame} id="start-button">Start Game</button>
+    </div>
+  </div>
+  <Scoreboard/>
+  <!-- <p>Falta:</p>
+  <ul>
+    <li>Mejor CSS</li>
+    <li>Mejor Loadings Animations</li>
+    <li>Guardar y Mostrar Mejor puntaje de cada categoria</li>
+    <li>Asegurarse que la página sea responsiva</li>
+  </ul> -->
+{/if}
+
+
 <style>
   select {
     background-color: #edf2f4;
@@ -80,33 +110,8 @@
     color: #edf2f4;
     margin-top: 10%;
   }
+
+  #gameType {
+    text-align: center;
+  }
 </style>
-
-
-{#if gameStarted}
-  <Game {gameType} />
-{:else}
-  <div class="wrapper">
-    <div class="main-container">
-      <img src="assets/masomenos.png" alt="Logo"/>
-      <div class="red-strip">
-        <label for="gameType">Select Game Type:</label>
-      </div>
-      <select bind:value={gameType} id="gameType">
-        <option value="population">Population</option>
-        <option value="area">Area</option>
-        <option value="infant_mortality">Infant Mortality</option>
-        <option value="gdp">GDP</option>
-        <option value="unemployment">Unemployment</option>
-      </select>
-      <button on:click={startGame} id="start-button">Start Game</button>
-    </div>  
-  </div>
-  <!-- <p>Falta:</p>
-  <ul>
-    <li>Mejor CSS</li>
-    <li>Mejor Loadings Animations</li>
-    <li>Guardar y Mostrar Mejor puntaje de cada categoria</li>
-    <li>Asegurarse que la página sea responsiva</li>
-  </ul> -->
-{/if}

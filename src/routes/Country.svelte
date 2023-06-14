@@ -25,6 +25,21 @@
 
 
 <style>
+  h3 {
+    color: #edf2f4;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    text-transform: uppercase;
+  }
+
+  p {
+    color: #edf2f4;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    text-transform: uppercase;
+  }
 
   .country{
     display: flex;
