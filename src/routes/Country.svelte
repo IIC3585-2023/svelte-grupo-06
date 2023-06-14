@@ -30,7 +30,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 300px;
+    min-width: 180px;
+    width: 250px;
   }
 
   .high-low {
@@ -65,8 +66,8 @@
   }
 
   .country img {
-    width: 20vw;
-    height: 10vw;
+    width: 180px;
+    height: 100px;
   }
 </style>
 

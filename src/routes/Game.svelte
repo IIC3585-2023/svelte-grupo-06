@@ -79,22 +79,24 @@
 
 <div class="game">
   {#if !loadingAtStart}
-    <h2>{gameType}</h2>
-    <div class="countries">
-      <Country country={currentCountry} {gameType} isCurrentCountry={true} {playGame}/>
-      <div class="vs">vs</div>
-      {#if gameOver}
-        <Country country={nextCountry} {gameType} isCurrentCountry={true} {playGame}/>
-      {:else}
-        {#if loadingCountry}
-          <div class="country">
-            <img src="https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif" alt="loading" />
-            <h3>Loading...</h3>
-          </div>
+    <div class="game-container">
+      <h2>{gameType}</h2>
+      <div class="countries">
+        <Country country={currentCountry} {gameType} isCurrentCountry={true} {playGame}/>
+        <div class="vs">vs</div>
+        {#if gameOver}
+          <Country country={nextCountry} {gameType} isCurrentCountry={true} {playGame}/>
         {:else}
-          <Country country={nextCountry} {gameType} isCurrentCountry={false} {playGame}/>
+          {#if loadingCountry}
+            <div class="country">
+              <img src="https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif" alt="loading" />
+              <h3>Loading...</h3>
+            </div>
+          {:else}
+            <Country country={nextCountry} {gameType} isCurrentCountry={false} {playGame}/>
+          {/if}
         {/if}
-      {/if}
+      </div>
     </div>
     {#if gameOver}
       <h2>Game Over</h2>
@@ -126,13 +128,13 @@
     justify-content: space-between;
     align-items: center;
     margin: 20px 0;
+    flex-wrap: wrap;
   }
 
   .country{
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 300px;
   }
 
   .vs {
@@ -146,6 +148,28 @@
     font-size: 2rem;
     color: #fff;
     margin: 0 20px;
+    margin-bottom: 30px;
   }
 
+  h2 {
+    color: #edf2f4;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    font-size: 30px;
+    text-transform: uppercase;
+  }
+
+  .game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 660px) {
+    /* Media query for screens with a maximum width of 600px */
+    .countries {
+      flex-direction: column; /* Change the flex direction to column */
+    }
+  }
 </style>
