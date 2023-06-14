@@ -1,5 +1,6 @@
 <script>
   import { onMount } from "svelte";
+  import { fade } from 'svelte/transition';
   import { scores } from '../stores.js';
   import Game from "./Game.svelte";
   import Scoreboard from "./Scoreboard.svelte";
@@ -30,11 +31,11 @@
 {#if gameStarted}
   <Game {gameType} />
 {:else}
-  <div class="wrapper">
+  <div class="wrapper" transition:fade>
     <div class="main-container">
       <img src="assets/masomenos.png" alt="Logo"/>
       <div class="red-strip">
-        <label for="gameType">Select Game Type:</label>
+        <label for="gameType">Select Category:</label>
       </div>
       <select bind:value={gameType} id="gameType">
         <option value="population">Population</option>
@@ -46,14 +47,7 @@
       <button on:click={startGame} id="start-button">Start Game</button>
     </div>
   </div>
-  <Scoreboard/>
-  <!-- <p>Falta:</p>
-  <ul>
-    <li>Mejor CSS</li>
-    <li>Mejor Loadings Animations</li>
-    <li>Guardar y Mostrar Mejor puntaje de cada categoria</li>
-    <li>Asegurarse que la página sea responsiva</li>
-  </ul> -->
+  <div transition:fade><Scoreboard/></div>
 {/if}
 
 
@@ -109,6 +103,7 @@
     background-color: #ef233c;
     color: #edf2f4;
     margin-top: 10%;
+    font-family: fantasy;
   }
 
   #gameType {
