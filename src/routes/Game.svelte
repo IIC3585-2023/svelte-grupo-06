@@ -1,6 +1,7 @@
 <script>
 
   import { onMount } from "svelte";
+  import { scores } from '../stores.js';
   import axios from "axios";
   import Country from "./Country.svelte";
   let countries = [];
@@ -12,13 +13,18 @@
   let gameOver = false;
   let currentScore = 0;
 
+  $: gameOver && updateHighscore(gameType, currentScore);
+
+  function updateHighscore(gameType, obtainedScore) {
+    if ($scores[gameType] < obtainedScore) {
+      $scores[gameType] = obtainedScore;
+    }
+  }
 
   async function fetchCountries() {
-
     const response = await axios.get("https://restcountries.com/v3.1/all");
     countries = response.data;
     currentCountry = await getRandomCountry();
-
 
     nextCountry = await getRandomCountry();
     loadingAtStart = false;
@@ -43,10 +49,13 @@
       return await getRandomCountry();
     }
     country.infant_mortality = response.data[0].infant_mortality;
+    country.gdp = response.data[0].gdp;
+    country.unemployment = response.data[0].unemployment;
 
     loadingCountry = false;
     return country;
   }
+
   async function playGame(higher) {
     let comparisonValueCurrent, comparisonValueNext;
     comparisonValueCurrent = currentCountry[gameType];
@@ -63,9 +72,9 @@
     }
 
   }
+
   onMount(fetchCountries);
 </script>
-
 
 
 <div class="game">
@@ -92,14 +101,14 @@
     {#if gameOver}
       <h2>Game Over</h2>
       <h3>Score: {currentScore}</h3>
-      <button on:click={() => window.location.reload()}>Play Again</button>
+      <button on:click={() => window.location.reload()}>Return to menu</button>
     {:else}
       <h2>Score: {currentScore}</h2>
     {/if}
   {:else}
-    <h2>Loading</h2>
+    <img src="https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif" alt="loading" />
+    <h2>Loading...</h2>
   {/if}
-
 </div>
 
 <style>

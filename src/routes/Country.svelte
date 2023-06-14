@@ -2,11 +2,11 @@
   export let country;
   export let gameType;
   export let isCurrentCountry;
-export let playGame;
+  export let playGame;
+
   function getReadableNumber(number) {
     return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
-
 </script>
 
 <div class="country">  
@@ -16,10 +16,10 @@ export let playGame;
     <p>has {getReadableNumber(country[gameType])}</p>
   {/if}
   {#if !isCurrentCountry}
-          <div class="high-low">
-            <div id="lower" on:click={() => playGame(false)}>Lower</div>
-            <div id="higher" on:click={() => playGame(true)}>Higher</div>
-          </div>
+    <div class="high-low">
+      <div id="lower" on:click={() => playGame(false)}>Lower</div>
+      <div id="higher" on:click={() => playGame(true)}>Higher</div>
+    </div>
   {/if}
 </div>
 
