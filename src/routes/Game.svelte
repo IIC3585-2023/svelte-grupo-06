@@ -89,8 +89,10 @@
         {:else}
           {#if loadingCountry}
             <div class="country">
-              <img src="https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif" alt="loading" />
+              <!-- <img src="https://media.giphy.com/media/3o7bu3XilJ5BOiSGic/giphy.gif" alt="loading" /> -->
               <h3>Loading...</h3>
+
+              <div class="loader"></div>
             </div>
           {:else}
             <Country country={nextCountry} {gameType} isCurrentCountry={false} {playGame}/>
@@ -106,12 +108,27 @@
       <h2>Score: {currentScore}</h2>
     {/if}
   {:else}
-    <img src="https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif" alt="loading" />
-    <h2>Loading...</h2>
+              <h3>Loading...</h3>
+              <div class="loader"></div>
   {/if}
 </div>
 
 <style>
+.loader {
+  border: 16px solid #f3f3f3; /* Light grey */
+  border-top: 16px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 80;
+  height: 80;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
   img {
     width: 200px;
   }
