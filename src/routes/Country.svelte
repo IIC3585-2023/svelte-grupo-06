@@ -17,8 +17,16 @@
   {/if}
   {#if !isCurrentCountry}
     <div class="high-low">
-      <div id="lower" on:click={() => playGame(false)}>Lower</div>
-      <div id="higher" on:click={() => playGame(true)}>Higher</div>
+      <div id="lower" on:click={() => playGame(false)} on:keydown={(event) => {
+        if (event.key === "Enter") {
+          playGame(false);
+        }
+      }}>Lower</div>
+      <div id="higher" on:click={() => playGame(true)} on:keydown={(event) => {
+        if (event.key === "Enter") {
+          playGame(true);
+        }
+      }}>Higher</div>
     </div>
   {/if}
 </div>
